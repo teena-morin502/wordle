@@ -1,21 +1,21 @@
-import React from 'react';
-import './../css_pages/wordle.css';
+import React from "react";
+import "./../styles/wordle.css";
 
 const WordleGrid = ({ attempts, currentGuess, gameState }) => {
   const rows = [...attempts];
 
-  if (gameState === 'playing' && rows.length < 6) {
-    const paddedGuess = currentGuess.padEnd(5, '');
+  if (gameState === "playing" && rows.length < 6) {
+    const paddedGuess = currentGuess.padEnd(5, "");
     rows.push({
       word: currentGuess,
-      result: paddedGuess.split('').map((letter) => ({ letter, status: '' }))
+      result: paddedGuess.split("").map((letter) => ({ letter, status: "" })),
     });
   }
 
   while (rows.length < 6) {
     rows.push({
-      word: '',
-      result: Array(5).fill({ letter: '', status: '' })
+      word: "",
+      result: Array(5).fill({ letter: "", status: "" }),
     });
   }
 

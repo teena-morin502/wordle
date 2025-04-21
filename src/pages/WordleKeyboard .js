@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const rows = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'];
+const rows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
 
 const WordleKeyboard = ({ keyColors, onKeyPress }) => {
   return (
@@ -8,22 +8,27 @@ const WordleKeyboard = ({ keyColors, onKeyPress }) => {
       {rows.map((row, i) => (
         <div key={i} className="keyboard-row">
           {i === 2 && (
-            <button className="key-button" onClick={() => onKeyPress('ENTER')}>
+            <button className="key-button" onClick={() => onKeyPress("ENTER")}>
               ENTER
             </button>
           )}
-          {row.split('').map((key) => (
+          {row.split("").map((key) => (
             <button
               key={key}
               className="key-button"
-              style={{ backgroundColor: keyColors[key.toLowerCase()] || 'white' }}
+              style={{
+                backgroundColor: keyColors[key.toLowerCase()] || "white",
+              }}
               onClick={() => onKeyPress(key)}
             >
               {key}
             </button>
           ))}
           {i === 2 && (
-            <button className="key-button" onClick={() => onKeyPress('BACKSPACE')}>
+            <button
+              className="key-button"
+              onClick={() => onKeyPress("BACKSPACE")}
+            >
               ⌫
             </button>
           )}

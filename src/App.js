@@ -1,14 +1,14 @@
-// src/App.js
-
-import React from "react";
-import { GameProvider } from "./components/pages/js_pages/GameProvider";  // Import GameProvider
-import WordleGame from "./components/pages/js_pages/WordleGame";  // Import WordleGame
+import React, { useState } from "react";
+import { Outlet, RouterProvider } from "react-router-dom";
+import mainRouter from "./routers/Router";
+import WordleGame from "./pages/WordleGame";
+import Layout from "./pages/Layout";
 
 function App() {
   return (
-
-      <WordleGame />
-
+    <div>
+      <RouterProvider router={mainRouter} />
+    </div>
   );
 }
 
