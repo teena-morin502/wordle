@@ -10,7 +10,7 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import "./../styles/register.css"
+import "./../styles/register.css";
 import { GiGamepad } from "react-icons/gi";
 
 function Register() {
@@ -81,8 +81,9 @@ function Register() {
     <div className="register-container">
       <div className="register-box">
         <h2>
-          <GiGamepad style={{ marginRight: "10px", color: "red" }}/> 
-          Register</h2>
+          <GiGamepad style={{ marginRight: "10px", color: "red" }} />
+          Register
+        </h2>
 
         <Formik
           initialValues={initialValues}

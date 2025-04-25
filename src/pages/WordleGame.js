@@ -1,88 +1,46 @@
 import React, { useState, useEffect } from "react";
-import GameProvider from "./GameProvider";
+import useGameProvider from "./GameProvider";
 import WordleGrid from "./WordleGrid";
 import WordleKeyboard from "./WordleKeyboard ";
+import { FaStopwatch } from "react-icons/fa";
+import { Toaster } from "react-hot-toast";
 import "./../styles/wordle.css";
-import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { FaTrophy, FaArrowLeft } from "react-icons/fa";
 
 function WordleGame() {
-  const {
-    currentGuess,
-    attempts,
-    keyColors,
-    gameState,
-    secretWord,
-    handleKeyPress,
-  } = GameProvider();
+  const { currentGuess, attempts, keyColors, gameState, handleKeyPress } =
+    useGameProvider();
 
   const [timer, setTimer] = useState(0);
-  const navigate = useNavigate();
 
-  // 🕒 Timer logic
   useEffect(() => {
     let interval;
     if (gameState === "playing") {
-      interval = setInterval(() => setTimer((prev) => prev + 1), 1000);
-    } else if (gameState !== "playing") {
+      interval = setInterval(() => {
+        setTimer((prev) => prev + 1);
+      }, 1000);
+    } else {
       clearInterval(interval);
     }
+
     return () => clearInterval(interval);
   }, [gameState]);
 
-  // 🧠 Handle win/lose alerts
-  useEffect(() => {
-    if (gameState === "won") {
-      Swal.fire({
-        title: "🎉 Congrats!",
-        text: `You guessed the word "${secretWord.toUpperCase()}" in ${timer} seconds.`,
-        icon: "success",
-        showCancelButton: true,
-        confirmButtonText: "Replay",
-        cancelButtonText: "Back to Home",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.reload();
-        } else {
-          navigate("/games");
-        }
-      });
-    } else if (gameState === "lost") {
-      Swal.fire({
-        title: "😢 You lost!",
-        text: `The word was "${secretWord.toUpperCase()}"`,
-        icon: "error",
-        showCancelButton: true,
-        confirmButtonText: "Replay",
-        cancelButtonText: "Back to Home",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.reload();
-        } else {
-          navigate("/games");
-        }
-      });
-    }
-  }, [gameState]);
+  const format = (val) => (val < 10 ? "0" + val : val);
+  const minutes = Math.floor(timer / 60);
+  const seconds = timer % 60;
+  const display = `${format(minutes)}:${format(seconds)}`;
 
   return (
     <div className="wordle-container">
-      {/* 🔝 Top Bar */}
+      <Toaster position="top-center" />
       <div className="top-bar">
-        <Link to="/games" className="top-bar-icon">
-          <FaArrowLeft title="Back to Games" />
-        </Link>
         <h2 className="top-bar-title">Wordle</h2>
-        <Link to="/leaderboard" className="top-bar-icon">
-          <FaTrophy title="Leaderboard" />
-        </Link>
         <div className="top-bar-timer">
-          ⏱️ {timer}s
+          <FaStopwatch style={{ marginRight: "4px" }} />
+          {display}
         </div>
       </div>
 
-      {/* 🔠 Game Board */}
       <WordleGrid
         attempts={attempts}
         currentGuess={currentGuess}

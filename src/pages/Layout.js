@@ -4,8 +4,6 @@ import Nav from "./Nav";
 
 function Layout() {
   const location = useLocation();
-
-  // Routes where Nav should be hidden
   const hideNavRoutes = ["/", "/register"];
   const hideNav = hideNavRoutes.includes(location.pathname);
 

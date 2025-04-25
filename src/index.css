@@ -1,32 +1,25 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bubblegum Sans", "Comic Sans MS", cursive;
+  background-color: #fceaff;
+  overflow-x: hidden;
+  background-image: url("https://media.istockphoto.com/id/1477417830/vector/game-joystick-on-pink-background-with-stars-vector-seamless-pattern-in-kawaii-style-for.jpg?s=612x612&w=0&k=20&c=XW5vbE4Pq9j4DUmP29gSKtaTgkoZ1ln9mCGRj2Y7gJc=");
+}
 
-body, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Bubblegum Sans', 'Comic Sans MS', cursive; 
-    background-color: #fceaff;
-    overflow-x: hidden;
-    background-image: url('https://media.istockphoto.com/id/1477417830/vector/game-joystick-on-pink-background-with-stars-vector-seamless-pattern-in-kawaii-style-for.jpg?s=612x612&w=0&k=20&c=XW5vbE4Pq9j4DUmP29gSKtaTgkoZ1ln9mCGRj2Y7gJc=');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Remove scrollbar */
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  
+::-webkit-scrollbar {
+  display: none;
+}
 
-  body {
-    font-size: 16px; 
-    color: #333;  
-  }
-  
-
-  
-  
+body {
+  font-size: 16px;
+  color: #333;
+}

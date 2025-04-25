@@ -8,7 +8,6 @@ function Nav() {
     <nav className="nav-bar">
       <Link to="/games" className="logo">
         <GiGamepad className="logo-icon" /> TinkyTussle
-
       </Link>
 
       <div className="nav-links">

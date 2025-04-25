@@ -15,8 +15,8 @@ const mainRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path:"/games",
-        element:<Games/>
+        path: "/games",
+        element: <Games />,
       },
       {
         path: "/wordle",

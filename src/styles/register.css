@@ -1,118 +1,117 @@
 .register-container {
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: "Comic Sans MS", "Bubblegum Sans", cursive;
+}
+
+.register-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 25px;
+  color: #333;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 25px rgba(255, 0, 102, 0.6);
+  animation: bounceIn 0.6s ease;
+  text-align: center;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  
-  .register-box {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 25px;
-    color: #333;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 0 25px rgba(255, 0, 102, 0.6);
-    animation: bounceIn 0.6s ease;
-    text-align: center;
-  }
-  
-  @keyframes bounceIn {
-    0% {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    60% {
-      transform: scale(1.05);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .register-box h2 {
-    font-size: 28px;
-    color: #ff0066;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .inputField {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    margin-bottom: 10px;
-    border-radius: 12px;
-    border: 2px solid #ffd700;
-    background-color: #fffde7;
-    font-size: 14px;
-    transition: border 0.3s;
-  }
-  
-  .inputField:focus {
-    border-color: #ff69b4;
-    outline: none;
-  }
-  
-  .inputField::placeholder {
-    color: #aaa;
-    font-style: italic;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: -8px;
-    margin-bottom: 10px;
-  }
-  
-  .register-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    border-radius: 15px;
-    border: none;
-    background: linear-gradient(to right, #ff69b4, #ff1493);
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255, 0, 102, 0.3);
-    transition: transform 0.2s;
-  }
-  
-  .register-button:hover {
+  60% {
     transform: scale(1.05);
+    opacity: 1;
   }
-  
-  .google-button {
-    background: linear-gradient(to right, #fbc02d, #ffa000);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  100% {
+    transform: scale(1);
   }
-  
-  .register-box p {
-    margin-top: 15px;
-    font-size: 14px;
-  }
-  
-  .register-box a {
-    color: #ff1493;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .register-box a:hover {
-    color: #ff0066;
-  }
-  
+}
+
+.register-box h2 {
+  font-size: 28px;
+  color: #ff0066;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 2px solid #ffd700;
+  background-color: #fffde7;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.inputField:focus {
+  border-color: #ff69b4;
+  outline: none;
+}
+
+.inputField::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+.register-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 15px;
+  border: none;
+  background: linear-gradient(to right, #ff69b4, #ff1493);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 0, 102, 0.3);
+  transition: transform 0.2s;
+}
+
+.register-button:hover {
+  transform: scale(1.05);
+}
+
+.google-button {
+  background: linear-gradient(to right, #fbc02d, #ffa000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.register-box p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-box a {
+  color: #ff1493;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.register-box a:hover {
+  color: #ff0066;
+}

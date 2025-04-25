@@ -10,8 +10,8 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { GiGamepad } from "react-icons/gi"; 
-import "./../styles/register.css"
+import { GiGamepad } from "react-icons/gi";
+import "./../styles/register.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -83,26 +83,50 @@ const Login = () => {
         >
           <Form>
             <div>
-              <Field name="email" type="email" placeholder="Email" className="inputField" />
-              <ErrorMessage name="email" component="div" className="error-message" />
+              <Field
+                name="email"
+                type="email"
+                placeholder="Email"
+                className="inputField"
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="error-message"
+              />
             </div>
             <div>
-              <Field name="password" type="password" placeholder="Password" className="inputField" />
-              <ErrorMessage name="password" component="div" className="error-message" />
+              <Field
+                name="password"
+                type="password"
+                placeholder="Password"
+                className="inputField"
+              />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="error-message"
+              />
             </div>
-            <button type="submit" className="register-button">Login</button>
+            <button type="submit" className="register-button">
+              Login
+            </button>
           </Form>
         </Formik>
 
         <p>or</p>
 
-        <button onClick={handleGoogleSignIn} className="register-button google-button">
+        <button
+          onClick={handleGoogleSignIn}
+          className="register-button google-button"
+        >
           <FcGoogle style={{ fontSize: "20px", marginRight: "8px" }} />
           Continue with Google
         </button>
 
         <p>
-          If you don't have an account? <Link to="/register">Register here</Link>
+          If you don't have an account?{" "}
+          <Link to="/register">Register here</Link>
         </p>
       </div>
     </div>
