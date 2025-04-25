@@ -40,7 +40,7 @@ function WordleGame() {
           {display}
         </div>
       </div>
-
+      
       <WordleGrid
         attempts={attempts}
         currentGuess={currentGuess}
