@@ -4,10 +4,6 @@
   justify-content: flex-start;
   align-items: center;
   padding: 40px 20px;
-  min-height: 100vh;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .games-column {

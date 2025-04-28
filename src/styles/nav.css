@@ -1,16 +1,3 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Bubblegum Sans", "Comic Sans MS", cursive;
-  background-color: #fceaff;
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
 
 .nav-bar {
   display: flex;
@@ -57,5 +44,23 @@ html {
 }
 
 .nav-link:hover {
+  color: #ffe066;
+}
+
+/* Style for Logout button to look like a link */
+.nav-link-button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Bubblegum Sans", "Comic Sans MS", cursive;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link-button:hover {
   color: #ffe066;
 }

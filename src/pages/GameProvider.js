@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../helpers/FireBase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const fetchSecretWord = async () => {
@@ -45,9 +46,17 @@ function useGameProvider() {
     if (user) {
       fetchSecretWord().then((word) => {
         setSecretWord(word);
-        toast.success("😎 The game is started!");
-        setStartTime(Date.now());
-        setGameState("playing");
+        Swal.fire({
+          title: "😎 Ready to Play?",
+          text: "Your Wordle game is starting!",
+          icon: "info",
+          confirmButtonText: "Let's Go!",
+          confirmButtonColor: "#4CAF50",
+          allowOutsideClick: false,
+        }).then(() => {
+          setStartTime(Date.now());
+          setGameState("playing");
+        });
       });
     }
   }, [user]);
@@ -113,17 +122,25 @@ function useGameProvider() {
         hasWon
       );
       setScore(finalScore);
-      if (hasWon) await saveScore(finalScore);
 
-      toast[hasWon ? "success" : "error"](
-        hasWon
-          ? `🎉 You won!\nTime: ${timeInSeconds}s\nScore: ${finalScore}`
-          : `❌ You lost! The word was "${secretWord}"`
-      );
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
+      if (hasWon) {
+        await saveScore(finalScore);
+        Swal.fire({
+          icon: "success",
+          title: "🎉 You won!",
+          html: `Time: <b>${timeInSeconds}</b> seconds<br>Score: <b>${finalScore}</b>`,
+          confirmButtonText: "Play Again",
+          confirmButtonColor: "#4CAF50",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "❌ You lost!",
+          html: `The correct word was <b>${secretWord}</b>`,
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "#F44336",
+        });
+      }
     }
   };
 

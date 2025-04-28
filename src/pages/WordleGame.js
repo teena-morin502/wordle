@@ -7,9 +7,7 @@ import { Toaster } from "react-hot-toast";
 import "./../styles/wordle.css";
 
 function WordleGame() {
-  const { currentGuess, attempts, keyColors, gameState, handleKeyPress } =
-    useGameProvider();
-
+  const { currentGuess, attempts, keyColors, gameState, handleKeyPress } = useGameProvider();
   const [timer, setTimer] = useState(0);
 
   useEffect(() => {
@@ -21,7 +19,6 @@ function WordleGame() {
     } else {
       clearInterval(interval);
     }
-
     return () => clearInterval(interval);
   }, [gameState]);
 
@@ -33,20 +30,22 @@ function WordleGame() {
   return (
     <div className="wordle-container">
       <Toaster position="top-center" />
+
       <div className="top-bar">
-        <h2 className="top-bar-title">Wordle</h2>
         <div className="top-bar-timer">
-          <FaStopwatch style={{ marginRight: "4px" }} />
-          {display}
+          <FaStopwatch />
+          <span>{display}</span>
         </div>
       </div>
-      
-      <WordleGrid
-        attempts={attempts}
-        currentGuess={currentGuess}
-        gameState={gameState}
-      />
-      <WordleKeyboard keyColors={keyColors} onKeyPress={handleKeyPress} />
+
+      <div className="game-area">
+        <WordleGrid
+          attempts={attempts}
+          currentGuess={currentGuess}
+          gameState={gameState}
+        />
+        <WordleKeyboard keyColors={keyColors} onKeyPress={handleKeyPress} />
+      </div>
     </div>
   );
 }
