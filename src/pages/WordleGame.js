@@ -7,7 +7,8 @@ import { Toaster } from "react-hot-toast";
 import "./../styles/wordle.css";
 
 function WordleGame() {
-  const { currentGuess, attempts, keyColors, gameState, handleKeyPress } = useGameProvider();
+  const { currentGuess, attempts, keyColors, gameState, handleKeyPress } =
+    useGameProvider();
   const [timer, setTimer] = useState(0);
 
   useEffect(() => {

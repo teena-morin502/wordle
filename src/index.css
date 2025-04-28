@@ -33,3 +33,102 @@ body {
   font-size: 16px;
   color: #333;
 }
+
+/* SweetAlert container background */
+.swal2-popup {
+  background: linear-gradient(135deg, #ff8da3, #ff5d8f); /* Gradient background for Swal */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Swal title */
+.swal2-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Swal text */
+.swal2-html-container {
+  font-size: 1.2em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Swal confirm button */
+.swal2-confirm {
+  background: linear-gradient(135deg, #4c2a91, #f29e66); /* Dark gradient button */
+  color: white;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.swal2-confirm:hover {
+  background: linear-gradient(135deg, #f29e66, #4c2a91);
+  transform: scale(1.05);
+}
+
+.swal2-confirm:active {
+  transform: scale(0.98);
+}
+
+/* Swal cancel button */
+.swal2-cancel {
+  background: linear-gradient(135deg, #ffb3e6, #ff9bb2); /* Light pink cancel button */
+  color: white;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.swal2-cancel:hover {
+  background: linear-gradient(135deg, #ff9bb2, #ffb3e6);
+  transform: scale(1.05);
+}
+
+.swal2-cancel:active {
+  transform: scale(0.98);
+}
+
+/* Swal icon */
+.swal2-icon {
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Swal footer */
+.swal2-footer {
+  color: #f1f1f1;
+  font-size: 1em;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

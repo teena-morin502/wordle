@@ -3,7 +3,7 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../helpers/FireBase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Swal from "sweetalert2";
-import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const fetchSecretWord = async () => {
   const wordsCollection = await getDocs(collection(db, "words"));
@@ -29,12 +29,19 @@ function useGameProvider() {
   const [user, setUser] = useState(null);
   const [startTime, setStartTime] = useState(null);
   const [score, setScore] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (loggedInUser) => {
       if (!loggedInUser) {
-        toast.error("Please log in to play.");
+        Swal.fire({
+          icon: "error",
+          title: "You are not logged in!",
+          text: "Please log in to play.",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#4CAF50",
+        });
         return;
       }
       setUser(loggedInUser);
@@ -51,15 +58,26 @@ function useGameProvider() {
           text: "Your Wordle game is starting!",
           icon: "info",
           confirmButtonText: "Let's Go!",
-          confirmButtonColor: "#4CAF50",
+          cancelButtonText: "Cancel",
+          customClass: {
+            title: "alert-title",
+            text: "alert-text",
+            confirmButton: "alert-button",
+            cancelButton: "alert-cancel-button",
+          },
+          showCancelButton: true,
           allowOutsideClick: false,
-        }).then(() => {
-          setStartTime(Date.now());
-          setGameState("playing");
+        }).then((result) => {
+          if (result.isConfirmed) {
+            setStartTime(Date.now());
+            setGameState("playing");
+          } else if (result.isDismissed) {
+            navigate("/games");
+          }
         });
       });
     }
-  }, [user]);
+  }, [user, navigate]);
 
   useEffect(() => {
     const handleKeyDown = (e) => handleKeyPress(e.key.toUpperCase());
@@ -116,30 +134,60 @@ function useGameProvider() {
     if (hasWon || hasLost) {
       setGameState(hasWon ? "won" : "lost");
       const timeInSeconds = Math.floor((Date.now() - startTime) / 1000);
-      const finalScore = calculateScore(
-        timeInSeconds,
-        newAttempts.length,
-        hasWon
-      );
+      const finalScore = calculateScore(timeInSeconds, newAttempts.length, hasWon);
       setScore(finalScore);
 
       if (hasWon) {
         await saveScore(finalScore);
-        Swal.fire({
-          icon: "success",
-          title: "🎉 You won!",
-          html: `Time: <b>${timeInSeconds}</b> seconds<br>Score: <b>${finalScore}</b>`,
-          confirmButtonText: "Play Again",
-          confirmButtonColor: "#4CAF50",
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "❌ You lost!",
-          html: `The correct word was <b>${secretWord}</b>`,
-          confirmButtonText: "Try Again",
-          confirmButtonColor: "#F44336",
-        });
+        setTimeout(() => {
+          Swal.fire({
+            icon: "success",
+            title: "🎉 You won!",
+            html: `Time: <b>${timeInSeconds}</b> seconds<br>Score: <b>${finalScore}</b>`,
+            confirmButtonText: "Play Again",
+            customClass: {
+              title: "alert-title",
+              text: "alert-text",
+              confirmButton: "alert-button",
+              cancelButton: "alert-cancel-button",
+            },
+            showCancelButton: true,
+            allowOutsideClick: false,
+          })
+            .then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              } else if (result.isDismissed) {
+                navigate("/games");
+              }
+            })
+            .catch((err) => console.log("Error showing win alert:", err));
+        }, 100);
+      } else if (hasLost) {
+        setTimeout(() => {
+          Swal.fire({
+            icon: "error",
+            title: "❌ You lost!",
+            html: `The correct word was <b>${secretWord}</b>`,
+            confirmButtonText: "Try Again",
+            customClass: {
+              title: "alert-title",
+              text: "alert-text",
+              confirmButton: "alert-button",
+              cancelButton: "alert-cancel-button",
+            },
+            showCancelButton: true,
+            allowOutsideClick: false,
+          })
+            .then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              } else if (result.isDismissed) {
+                navigate("/games");
+              }
+            })
+            .catch((err) => console.log("Error showing lost alert:", err));
+        }, 100);
       }
     }
   };
