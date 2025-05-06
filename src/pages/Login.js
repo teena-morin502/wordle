@@ -123,7 +123,6 @@ const Login = () => {
           <FcGoogle style={{ fontSize: "20px", marginRight: "8px" }} />
           Continue with Google
         </button>
-
         <p>
           If you don't have an account?{" "}
           <Link to="/register">Register here</Link>

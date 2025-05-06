@@ -7,11 +7,7 @@ const WordleKeyboard = ({ keyColors, onKeyPress }) => {
     <div className="wordle-keyboard">
       {rows.map((row, i) => (
         <div key={i} className="keyboard-row">
-          {i === 2 && (
-            <button className="key-button" onClick={() => onKeyPress("ENTER")}>
-              ENTER
-            </button>
-          )}
+          {i === 2 && <button className="key-button">ENTER</button>}
           {row.split("").map((key) => (
             <button
               key={key}
@@ -19,19 +15,11 @@ const WordleKeyboard = ({ keyColors, onKeyPress }) => {
               style={{
                 backgroundColor: keyColors[key.toLowerCase()] || "white",
               }}
-              onClick={() => onKeyPress(key)}
             >
               {key}
             </button>
           ))}
-          {i === 2 && (
-            <button
-              className="key-button"
-              onClick={() => onKeyPress("BACKSPACE")}
-            >
-              ⌫
-            </button>
-          )}
+          {i === 2 && <button className="key-button">⌫</button>}
         </div>
       ))}
     </div>
