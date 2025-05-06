@@ -5,13 +5,12 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-// Choose your color theme here:
 const swalTheme = {
-  background: "#f3e8ff", // Lavender Dream
+  background: "#f3e8ff",
   color: "#4b0082",
   iconColor: "#c084fc",
   confirmButtonColor: "#d946ef",
-  cancelButtonColor: "#a78bfa"
+  cancelButtonColor: "#a78bfa",
 };
 
 const fetchSecretWord = async () => {
@@ -118,7 +117,10 @@ function useGameProvider() {
     const updatedColors = { ...keyColors };
     result.forEach(({ letter, status }) => {
       const current = updatedColors[letter] || "";
-      if (status === "correct" || (status === "present" && current !== "green")) {
+      if (
+        status === "correct" ||
+        (status === "present" && current !== "green")
+      ) {
         updatedColors[letter] = status === "correct" ? "green" : "yellow";
       } else if (!current) {
         updatedColors[letter] = "gray";
@@ -136,7 +138,11 @@ function useGameProvider() {
     if (hasWon || hasLost) {
       setGameState(hasWon ? "won" : "lost");
       const timeInSeconds = Math.floor((Date.now() - startTime) / 1000);
-      const finalScore = calculateScore(timeInSeconds, newAttempts.length, hasWon);
+      const finalScore = calculateScore(
+        timeInSeconds,
+        newAttempts.length,
+        hasWon
+      );
       setScore(finalScore);
 
       const alertOptions = {

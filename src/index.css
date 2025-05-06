@@ -14,8 +14,13 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("https://media.istockphoto.com/id/1477417830/vector/game-joystick-on-pink-background-with-stars-vector-seamless-pattern-in-kawaii-style-for.jpg?s=612x612&w=0&k=20&c=XW5vbE4Pq9j4DUmP29gSKtaTgkoZ1ln9mCGRj2Y7gJc=");
-  opacity: 0.70;
+  background-repeat: repeat;
+  background-image: var(
+    --bg-image,
+    url("https://media.istockphoto.com/id/1477417830/vector/game-joystick-on-pink-background-with-stars-vector-seamless-pattern-in-kawaii-style-for.jpg?s=612x612&w=0&k=20&c=XW5vbE4Pq9j4DUmP29gSKtaTgkoZ1ln9mCGRj2Y7gJc=")
+  );
+  background-color: var(--bg-color, transparent);
+  opacity: 0.7;
   z-index: -1;
 }
 

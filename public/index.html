@@ -27,6 +27,23 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const bgType = localStorage.getItem("bgType");
+        const bgValue = localStorage.getItem("bgValue");
+
+        if (bgType && bgValue) {
+          if (bgType === "image") {
+            root.style.setProperty("--bg-image", bgValue);
+            root.style.setProperty("--bg-color", "transparent");
+          } else {
+            root.style.setProperty("--bg-color", bgValue);
+            root.style.setProperty("--bg-image", "none");
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
